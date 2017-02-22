@@ -3,6 +3,15 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+/**
+ *
+ * @app.module.ts
+ * Date: Tuesday February 21st 2017
+ * Author: Nicholas Rowlandson (200167125)
+ * Description: This is the app.module for ionictodoapp
+ *
+*/
+
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
 

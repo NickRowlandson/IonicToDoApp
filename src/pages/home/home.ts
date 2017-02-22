@@ -3,6 +3,15 @@ import { NavController, AlertController, ActionSheetController } from 'ionic-ang
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import 'rxjs/add/operator/map'
 
+/**
+ *
+ * @home.ts
+ * Date: Tuesday February 21st 2017
+ * Author: Nicholas Rowlandson (200167125)
+ * Description: This is all functionality for ionictodoapp frontend
+ *
+*/
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -11,7 +20,7 @@ export class HomePage {
   // PROPERTIES
   toDos: FirebaseListObservable<any>;
   toDoLength: any;
-  
+
   // CONSTRUCTOR
   constructor(
     public navCtrl: NavController,
@@ -22,7 +31,8 @@ export class HomePage {
     this.toDos.map(list=>list.length).subscribe(length=>this.toDoLength = length);
   }
 
-  // METHODS
+  //METHODS
+  // Add a to do. The folowing code will present a popup requesting input of to do name
   addToDo(){
     let prompt = this.alertCtrl.create({
       title: 'To Do Name',
@@ -54,10 +64,12 @@ export class HomePage {
     prompt.present();
   }
 
+  //Remove to do from list.
   removeToDo(toDoId: string){
     this.toDos.remove(toDoId);
   }
 
+  //Update the to do.
   updateToDo(toDoId, toDoTitle){
     let prompt = this.alertCtrl.create({
       title: 'To Do Name',
@@ -89,6 +101,7 @@ export class HomePage {
     prompt.present();
   }
 
+  //Update completed status when checkbox is clicked.
   updateStatus(toDoId, done){
     if(done == true){
       this.toDos.update(toDoId, {

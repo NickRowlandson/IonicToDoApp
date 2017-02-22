@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
 import { HomePage } from '../pages/home/home';
 
+/**
+ *
+ * @app.component.ts
+ * Date: Tuesday February 21st 2017
+ * Author: Nicholas Rowlandson (200167125)
+ * Description: This is the app.component for ionictodoapp
+ *
+*/
 
 @Component({
   templateUrl: 'app.html'

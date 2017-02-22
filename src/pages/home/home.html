@@ -1,15 +1,16 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>My To Do's</ion-title>
+    <h1>To Do List</h1>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h1>To Do List</h1>
   <button ion-button (click)="addToDo()">
     <ion-icon name="add" class="newButton"></ion-icon>New To Do
   </button>
-  <div *ngIf="toDoLength"  class="toDoCount">{{ toDoLength }}</div>
+  <button ion-button color="dark" class="toDoCount">
+    Completed: of {{ toDoLength }}
+  </button>
   <ion-list inset>
     <ion-item-sliding *ngFor="let toDo of toDos | async">
       <ion-item>
