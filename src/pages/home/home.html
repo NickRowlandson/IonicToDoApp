@@ -9,7 +9,7 @@
     <ion-icon name="add" class="newButton"></ion-icon>New To Do
   </button>
   <button ion-button color="dark" class="toDoCount">
-    Completed: of {{ toDoLength }}
+    Completed: {{ completedLength }} of {{ toDoLength }}
   </button>
   <ion-list inset>
     <ion-item-sliding *ngFor="let toDo of toDos | async">

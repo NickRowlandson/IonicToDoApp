@@ -19,7 +19,9 @@ import 'rxjs/add/operator/map'
 export class HomePage {
   // PROPERTIES
   toDos: FirebaseListObservable<any>;
+  completed: FirebaseListObservable<any>;
   toDoLength: any;
+  completedLength: any;
 
   // CONSTRUCTOR
   constructor(
@@ -29,6 +31,14 @@ export class HomePage {
     af:AngularFire) {
     this.toDos = af.database.list('/toDos');
     this.toDos.map(list=>list.length).subscribe(length=>this.toDoLength = length);
+
+    this.completed = af.database.list('/toDos', {
+       query: {
+         orderByChild: 'done',
+         equalTo: true
+       }
+     });
+     this.completed.map(list=>list.length).subscribe(length=>this.completedLength = length);
   }
 
   //METHODS
