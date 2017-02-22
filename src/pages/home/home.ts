@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, ActionSheetController } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import 'rxjs/add/operator/map'
 
 @Component({
   selector: 'page-home',
@@ -9,7 +10,8 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class HomePage {
   // PROPERTIES
   toDos: FirebaseListObservable<any>;
-
+  toDoLength: any;
+  
   // CONSTRUCTOR
   constructor(
     public navCtrl: NavController,
@@ -17,6 +19,7 @@ export class HomePage {
     public actionSheetCtrl: ActionSheetController,
     af:AngularFire) {
     this.toDos = af.database.list('/toDos');
+    this.toDos.map(list=>list.length).subscribe(length=>this.toDoLength = length);
   }
 
   // METHODS
@@ -87,8 +90,6 @@ export class HomePage {
   }
 
   updateStatus(toDoId, done){
-    console.log(done)
-    console
     if(done == true){
       this.toDos.update(toDoId, {
         done: false

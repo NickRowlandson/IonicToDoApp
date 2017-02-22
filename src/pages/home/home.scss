@@ -1,3 +1,21 @@
 page-home {
 
 }
+
+.newButton {
+  padding-right: 10px
+}
+
+.toDoUnChecked{
+  display: inline;
+}
+
+.toDoChecked {
+  display: inline;
+  text-decoration: line-through;
+}
+
+.toDoCount {
+  float: right;
+  padding-right:25px;
+}
