@@ -112,7 +112,6 @@ export class HomePage {
         done: true
       });
     }
-
   }
 
 }

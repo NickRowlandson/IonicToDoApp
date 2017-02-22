@@ -14,7 +14,7 @@
   <ion-list inset>
     <ion-item-sliding *ngFor="let toDo of toDos | async">
       <ion-item>
-          <ion-checkbox type="checkbox" [(ngModel)]="toDo.done" (click)="updateStatus(toDo.$key, toDo.done)"></ion-checkbox>
+          <ion-checkbox type="checkbox" checked="{{toDo.done}}" (click)="updateStatus(toDo.$key, toDo.done)"></ion-checkbox>
           <ion-label *ngIf="toDo.done == false" class="toDoUnChecked">{{toDo.title}}</ion-label>
           <ion-label *ngIf="toDo.done == true" class="toDoChecked">{{toDo.title}}</ion-label>
       </ion-item>
