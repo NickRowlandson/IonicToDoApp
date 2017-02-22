@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>My To Do's</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>To Do List</h1>
+  <button ion-button (click)="addToDo()">
+    <ion-icon name="add"> </ion-icon> Add New To Do
+  </button>
+  <ion-list inset>
+    <ion-item-sliding *ngFor="let toDo of toDos | async">
+      <ion-item>
+          <input type="checkbox" [(ngModel)]="toDo.done" (click)="updateStatus(toDo.$key, toDo.done)">
+          <div *ngIf="toDo.done == false" style="display:inline;">{{toDo.title}}</div>
+          <div *ngIf="toDo.done == true" style="display:inline;text-decoration:line-through;">{{toDo.title}}</div>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="updateToDo(toDo.$key, toDo.title)">
+        <ion-icon name="build" ></ion-icon>
+        Edit</button>
+        <button ion-button color="danger" (click)="removeToDo(toDo.$key)">
+        <ion-icon name="trash"></ion-icon>
+        Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
